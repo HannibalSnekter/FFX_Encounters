@@ -1,0 +1,707 @@
+[
+    {
+        "Name": "Chain",
+        "Distance": 62,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 7,
+	"First Strike":false,
+	"Formations": [
+		["piranha", "piranha_2"],
+		["piranha_3"]
+	]
+    },
+    {
+        "Name": "Lagoon",
+        "Distance": 142,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 9,
+	"First Strike":false,
+	"Formations": [
+		["piranha", "piranha_2"],
+		["piranha", "piranha_2"],
+		["piranha_2", "piranha", "piranha_3"],
+		["piranha_2", "piranha", "piranha", "piranha"]
+	]
+    },
+    {
+        "Name": "Besaid Road",
+        "Distance": 39,
+        "DangerValue": 70,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 15,
+	"First Strike":false,
+	"Formations": [
+		["dingo_2", "water_flan_2"],
+		["dingo_2", "condor_2"],
+		["condor_2", "water_flan_2"],
+		["dingo_2", "water_flan_2", "condor_2"]
+	]
+    },
+    {
+        "Name": "Kilika In",
+        "Distance": 188,
+        "DangerValue": 65,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 18,
+	"First Strike":false,
+	"Formations": [
+		["dinonix", "yellow_element"],
+		["dinonix", "yellow_element"],
+		["dinonix", "killer_bee"],
+		["dinonix", "killer_bee"],
+		["yellow_element", "killer_bee"],
+		["yellow_element", "killer_bee"],
+		["dinonix", "yellow_element", "killer_bee"],
+		["dinonix", "yellow_element", "killer_bee"],
+		["ragora"],
+		["ragora"],
+		["ragora"],
+		["ragora", "ragora"],
+		["ragora", "killer_bee", "killer_bee"]
+	]
+    },
+    {
+        "Name": "Kilika Out",
+        "Distance": 165,
+        "DangerValue": 65,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 19,
+	"First Strike":false,
+	"Formations": [
+		["dinonix", "yellow_element"],
+		["dinonix", "yellow_element"],
+		["dinonix", "killer_bee"],
+		["dinonix", "killer_bee"],
+		["yellow_element", "killer_bee"],
+		["yellow_element", "killer_bee"],
+		["dinonix", "yellow_element", "killer_bee"],
+		["dinonix", "yellow_element", "killer_bee"],
+		["ragora"],
+		["ragora"],
+		["ragora"],
+		["ragora", "ragora"],
+		["ragora", "killer_bee", "killer_bee"]
+	]
+    },
+    {
+        "Name": "Mi'ihen Screen 1",
+        "Distance": 143,
+        "DangerValue": 50,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 27,
+	"First Strike":false,
+	"Formations": [
+		["mi'ihen_fang", "white_element", "floating_eye"],
+		["mi'ihen_fang", "white_element", "raldo_2"],
+		["floating_eye", "mi'ihen_fang", "raldo_2"],
+		["raldo_2", "white_element", "floating_eye"],
+		["bomb"],
+		["dual_horn"]
+	]
+    },
+    {
+        "Name": "Mi'ihen Screen 2",
+        "Distance": 101,
+        "DangerValue": 50,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 27,
+	"First Strike":false,
+	"Formations": [
+		["white_element", "mi'ihen_fang", "floating_eye"],
+		["white_element", "mi'ihen_fang", "floating_eye"],
+		["white_element", "mi'ihen_fang", "floating_eye"],
+		["mi'ihen_fang", "white_element", "raldo_2"],
+		["mi'ihen_fang", "white_element", "raldo_2"],
+		["mi'ihen_fang", "white_element", "raldo_2"],
+		["mi'ihen_fang", "raldo_2", "floating_eye"],
+		["mi'ihen_fang", "raldo_2", "floating_eye"],
+		["mi'ihen_fang", "raldo_2", "floating_eye"],
+		["raldo_2", "white_element", "floating_eye"],
+		["raldo_2", "white_element", "floating_eye"],
+		["raldo_2", "white_element", "floating_eye"],
+		["dual_horn", "mi'ihen_fang"],
+		["dual_horn", "mi'ihen_fang"],
+		["bomb", "bomb", "dual_horn"],
+		["floating_eye", "bomb", "floating_eye"],
+		["floating_eye", "bomb", "floating_eye"],
+		["bomb", "bomb", "bomb"]
+	]
+    },
+    {
+        "Name": "Mi'ihen Screen 3",
+        "Distance": 255,
+        "DangerValue": 50,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 27,
+	"First Strike":false,
+	"Formations": [
+		["white_element", "mi'ihen_fang", "floating_eye"],
+		["white_element", "mi'ihen_fang", "floating_eye"],
+		["white_element", "mi'ihen_fang", "floating_eye"],
+		["mi'ihen_fang", "white_element", "raldo_2"],
+		["mi'ihen_fang", "white_element", "raldo_2"],
+		["mi'ihen_fang", "white_element", "raldo_2"],
+		["mi'ihen_fang", "raldo_2", "floating_eye"],
+		["mi'ihen_fang", "raldo_2", "floating_eye"],
+		["mi'ihen_fang", "raldo_2", "floating_eye"],
+		["raldo_2", "white_element", "floating_eye"],
+		["raldo_2", "white_element", "floating_eye"],
+		["raldo_2", "white_element", "floating_eye"],
+		["dual_horn", "mi'ihen_fang"],
+		["dual_horn", "mi'ihen_fang"],
+		["bomb", "bomb", "dual_horn"],
+		["floating_eye", "bomb", "floating_eye"],
+		["floating_eye", "bomb", "floating_eye"],
+		["bomb", "bomb", "bomb"]
+	]
+    },
+    {
+        "Name": "Old Road Screen 1",
+        "Distance": 122,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 28,
+	"First Strike":false,
+	"Formations": [
+		["vouivre", "ipiria", "thunder_flan"],
+		["vouivre", "ipiria", "thunder_flan"],
+		["vouivre", "ipiria", "thunder_flan"],
+		["ipiria", "vouivre", "floating_eye"],
+		["ipiria", "vouivre", "floating_eye"],
+		["ipiria", "vouivre", "floating_eye"],
+		["vouivre", "floating_eye", "thunder_flan"],
+		["vouivre", "floating_eye", "thunder_flan"],
+		["vouivre", "floating_eye", "thunder_flan"],
+		["vouivre", "thunder_flan"],
+		["vouivre", "thunder_flan"],
+		["vouivre", "thunder_flan"],
+		["thunder_flan", "bomb", "bomb"],
+		["thunder_flan", "bomb", "bomb"],
+		["dual_horn", "thunder_flan"],
+		["dual_horn", "thunder_flan"],
+		["vouivre", "dual_horn", "dual_horn"],
+		["vouivre", "dual_horn", "dual_horn"],
+		["bomb", "dual_horn", "bomb"],
+		["bomb", "dual_horn", "bomb"]
+	]
+    },
+    {
+        "Name": "Old Road Screen 2",
+        "Distance": 72,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 28,
+	"First Strike":false,
+	"Formations": [
+		["vouivre", "ipiria", "thunder_flan"],
+		["vouivre", "ipiria", "thunder_flan"],
+		["vouivre", "ipiria", "thunder_flan"],
+		["ipiria", "vouivre", "floating_eye"],
+		["ipiria", "vouivre", "floating_eye"],
+		["ipiria", "vouivre", "floating_eye"],
+		["vouivre", "floating_eye", "thunder_flan"],
+		["vouivre", "floating_eye", "thunder_flan"],
+		["vouivre", "floating_eye", "thunder_flan"],
+		["vouivre", "thunder_flan"],
+		["vouivre", "thunder_flan"],
+		["vouivre", "thunder_flan"],
+		["thunder_flan", "bomb", "bomb"],
+		["thunder_flan", "bomb", "bomb"],
+		["dual_horn", "thunder_flan"],
+		["dual_horn", "thunder_flan"],
+		["vouivre", "dual_horn", "dual_horn"],
+		["vouivre", "dual_horn", "dual_horn"],
+		["bomb", "dual_horn", "bomb"],
+		["bomb", "dual_horn", "bomb"]
+	]
+    },
+    {
+        "Name": "Clasko Skip Screen 1",
+        "Distance": 55,
+        "DangerValue": 35,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 28,
+	"First Strike":false,
+	"Formations": [
+		["vouivre", "ipiria", "thunder_flan"],
+		["vouivre", "ipiria", "floating_eye"],
+		["thunder_flan", "floating_eye", "vouivre"],
+		["thunder_flan", "bomb", "bomb"],
+		["bomb", "bomb", "dual_horn"],
+		["dual_horn", "vouivre", "dual_horn"]
+	]
+    },
+    {
+        "Name": "Clasko Skip Screen 2",
+        "Distance": 156,
+        "DangerValue": 35,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 28,
+	"First Strike":false,
+	"Formations": [
+		["vouivre", "ipiria", "thunder_flan"],
+		["vouivre", "ipiria", "floating_eye"],
+		["thunder_flan", "floating_eye", "vouivre"],
+		["thunder_flan", "bomb", "bomb"],
+		["bomb", "bomb", "dual_horn"],
+		["dual_horn", "vouivre", "dual_horn"]
+	]
+    },
+    {
+        "Name": "Djose Highroad (Aftermath to Temple)",
+        "Distance": 186,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 28,
+	"First Strike":false,
+	"Formations": [
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "simurgh"],
+		["garm", "bunyip_2", "simurgh"],
+		["gandarewa", "funguar", "gandarewa"],
+		["gandarewa", "gandarewa", "snow_flan"],
+		["basilisk", "funguar", "funguar"],
+		["basilisk", "funguar", "funguar"],
+		["basilisk", "funguar", "funguar"],
+		["simurgh", "bite_bug", "bite_bug"],
+		["basilisk", "basilisk"],
+		["basilisk", "basilisk"],
+		["basilisk", "basilisk"]
+	]
+    },
+    {
+        "Name": "Djose Highroad (Temple to Moonflow)",
+        "Distance": 26,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 28,
+	"First Strike":false,
+	"Formations": [
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "simurgh"],
+		["garm", "bunyip_2", "simurgh"],
+		["gandarewa", "funguar", "gandarewa"],
+		["gandarewa", "gandarewa", "snow_flan"],
+		["basilisk", "funguar", "funguar"],
+		["basilisk", "funguar", "funguar"],
+		["basilisk", "funguar", "funguar"],
+		["simurgh", "bite_bug", "bite_bug"],
+		["basilisk", "basilisk"],
+		["basilisk", "basilisk"],
+		["basilisk", "basilisk"]
+	]
+    },
+    {
+        "Name": "Moonflow (South)",
+        "Distance": 309,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 28,
+	"First Strike":false,
+	"Formations": [
+		["bunyip_2", "garm", "bite_bug"],
+		["ochu", "bite_bug", "bite_bug"],
+		["ochu", "bite_bug", "bite_bug"],
+		["ochu", "garm"],
+		["ochu", "garm"],
+		["ochu"],
+		["ochu"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["garm", "bunyip_2", "snow_flan"],
+		["gandarewa", "funguar", "gandarewa"]
+	]
+    },
+    {
+        "Name": "Moonflow (North)",
+        "Distance": 86,
+        "DangerValue": 35,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 30,
+	"First Strike":false,
+	"Formations": [
+		["???_2", "garm", "bunyip_2"],
+		["???_2", "bite_bug", "bite_bug"],
+		["???_2", "bunyip_2", "bite_bug", "bite_bug"],
+		["ochu", "garm"],
+		["garm", "bunyip_2", "snow_flan"]
+	]
+    },
+    {
+        "Name": "Thunder Plains (South)",
+        "Distance": 223,
+        "DangerValue": 35,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 30,
+	"First Strike":false,
+	"Formations": [
+		["larva", "gold_element"],
+		["melusine", "kusariqqu", "aerouge"],
+		["gold_element", "buer", "melusine"],
+		["larva", "aerouge", "aerouge"],
+		["gold_element", "buer", "aerouge"]
+	]
+    },
+    {
+        "Name": "Thunder Plains (North)",
+        "Distance": 235,
+        "DangerValue": 30,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 30,
+	"First Strike":false,
+	"Formations": [
+		["iron_giant"],
+		["iron_giant", "buer", "buer"],
+		["larva", "larva"],
+		["melusine", "kusariqqu", "aerouge"],
+		["gold_element", "buer", "kusariqqu"]
+	]
+    },
+    {
+        "Name": "Macalania Woods (Screen 1)",
+        "Distance": 59,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 30,
+	"First Strike":false,
+	"Formations": [
+		["iguion", "murussu", "wasp"],
+		["iguion", "murussu", "blue_element"],
+		["wasp", "blue_element", "blue_element"],
+		["xiphos"],
+		["wasp", "wasp", "xiphos"],
+		["chimera"],
+		["chimera"]
+	]
+    },
+    {
+        "Name": "Macalania Woods (Screen 2)",
+        "Distance": 150,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 30,
+	"First Strike":false,
+	"Formations": [
+		["iguion", "murussu", "wasp"],
+		["iguion", "murussu", "blue_element"],
+		["wasp", "blue_element", "blue_element"],
+		["xiphos"],
+		["wasp", "wasp", "xiphos"],
+		["chimera"],
+		["chimera"]
+	]
+    },
+    {
+        "Name": "Macalania Woods (Screen 3)",
+        "Distance": 120,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 30,
+	"First Strike":false,
+	"Formations": [
+		["iguion", "murussu", "wasp"],
+		["iguion", "murussu", "blue_element"],
+		["wasp", "blue_element", "blue_element"],
+		["xiphos"],
+		["wasp", "wasp", "xiphos"],
+		["chimera"],
+		["chimera"]
+	]
+    },
+    {
+        "Name": "Lake Macalania",
+        "Distance": 40,
+        "DangerValue": 30,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 31,
+	"First Strike":true,
+	"Formations": [
+		["evil_eye", "ice_flan", "snow_wolf"],
+		["snow_wolf", "ice_flan", "mafdet"],
+		["snow_wolf", "ice_flan", "snow_wolf"]
+	]
+    },
+    {
+        "Name": "Crevasse",
+        "Distance": 122,
+        "DangerValue": 50,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 33,
+	"First Strike":true,
+	"Formations": [
+		["evil_eye", "snow_wolf", "ice_flan"],
+		["mafdet", "snow_wolf", "ice_flan"],
+		["mafdet", "evil_eye", "evil_eye"]
+	]
+    },
+    {
+        "Name": "Bikanel (Pre-Machina)",
+        "Distance": 143,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 35,
+	"First Strike":true,
+	"Formations": [
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["zu"],
+		["sand_worm"],
+		["cactuar"]
+	]
+    },
+    {
+        "Name": "Bikanel (Post-Machina)",
+        "Distance": 91,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 36,
+	"First Strike":true,
+	"Formations": [
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["zu"],
+		["sand_worm"],
+		["cactuar"]
+	]
+    },
+    {
+        "Name": "Bikanel (Central + Ruins)",
+        "Distance": 211,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 36,
+	"First Strike":true,
+	"Formations": [
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "mushussu", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["sand_wolf", "alcyone", "alcyone"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["zu"],
+		["sand_worm"],
+		["cactuar"]
+	]
+    },
+    {
+        "Name": "Bikanel (West Pre-Sandragora 1)",
+        "Distance": 67,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 36,
+	"First Strike":true,
+	"Formations": [
+		["mushussu", "sand_wolf", "alcyone"],
+		["mushussu", "sand_wolf", "alcyone"],
+		["mushussu", "alcyone", "alcyone"],
+		["mushussu", "alcyone", "alcyone"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["mech_gunner", "mech_guard", "mech_guard"],
+		["mech_gunner", "mech_guard", "mech_guard"],
+		["zu"],
+		["sand_worm"],
+		["cactuar"]
+	]
+    },
+    {
+        "Name": "Bikanel (West Post-Sandragora 1)",
+        "Distance": 60,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 37,
+	"First Strike":true,
+	"Formations": [
+		["mushussu", "sand_wolf", "alcyone"],
+		["mushussu", "sand_wolf", "alcyone"],
+		["mushussu", "alcyone", "alcyone"],
+		["mushussu", "alcyone", "alcyone"],
+		["mech_guard", "mech_guard"],
+		["mech_guard", "mech_guard"],
+		["mech_gunner", "mech_guard", "mech_guard"],
+		["mech_gunner", "mech_guard", "mech_guard"],
+		["zu"],
+		["sand_worm"],
+		["cactuar"]
+	]
+    },
+    {
+        "Name": "Home",
+        "Distance": 17,
+        "DangerValue": 30,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 39,
+	"First Strike":true,
+	"Formations": [
+		["guado_guardian_3", "bomb_2", "bomb_2", "bomb_2"],
+		["guado_guardian_3", "evil_eye_2", "evil_eye_2"],
+		["dual_horn_2", "dual_horn_2", "guado_guardian_3"],
+		["chimera_2", "chimera_2", "guado_guardian_3"]
+	]
+    },
+    {
+        "Name": "Airship",
+        "Distance": 23,
+        "DangerValue": 30,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 40,
+	"First Strike":true,
+	"Formations": [
+		["bomb_2", "bomb_2", "bomb_2"],
+		["evil_eye_2", "evil_eye_2"],
+		["dual_horn_2", "dual_horn_2"]
+	]
+    },
+    {
+        "Name": "Via Purifico (Land)",
+        "Distance": 44,
+        "DangerValue": 20,
+	"StartSteps": 58,
+        "EncounterCount": 0,
+        "Forced Encounters": 46,
+	"First Strike":false,
+	"Formations": [
+		["maze_larva"]
+	]
+    },
+    {
+        "Name": "Via Purifico (Underwater)",
+        "Distance": 64,
+        "DangerValue": 40,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 49,
+	"First Strike":true,
+	"Formations": [
+		["phlegyas", "phlegyas"],
+		["remora", "phlegyas", "remora"],
+		["remora", "sahagin_3", "remora", "sahagin_3"],
+		["sahagin_3", "octopus", "sahagin_3"],
+		["octopus", "octopus"]
+	]
+    },
+    {
+        "Name": "Highbridge",
+        "Distance": 105,
+        "DangerValue": 35,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 50,
+	"First Strike":true,
+	"Formations": [
+		["ykt-63", "warrior_monk_2", "warrior_monk_2"],
+		["ykt-63", "yat-99", "ykt-63"],
+		["ykt-63", "yat-99", "ykt-63"],
+		["yat-99", "ykt-63", "yat-99"],
+		["yat-99", "ykt-63", "yat-99"]
+	]
+    },
+    {
+        "Name": "Calm Lands (South)",
+        "Distance": 196,
+        "DangerValue": 50,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 51,
+	"First Strike":true,
+	"Formations": [
+		["skoll", "flame_flan", "mech_scouter"],
+		["skoll", "flame_flan", "mech_scouter"],
+		["nebiros", "shred", "flame_flan"],
+		["nebiros", "shred", "flame_flan"],
+		["mech_scouter", "nebiros", "nebiros", "skoll"],
+		["mech_scouter", "nebiros", "nebiros", "skoll"]
+	]
+    },
+    {
+        "Name": "Calm Lands (Central + North)",
+        "Distance": 288,
+        "DangerValue": 60,
+	"StartSteps": 1,
+        "EncounterCount": 0,
+        "Forced Encounters": 51,
+	"First Strike":true,
+	"Formations": [
+		["skoll", "flame_flan", "mech_scouter"],
+		["skoll", "flame_flan", "mech_scouter"],
+		["skoll", "flame_flan", "mech_scouter"],
+		["skoll", "flame_flan", "mech_scouter"],
+		["skoll", "flame_flan", "mech_scouter"],
+		["nebiros", "shred", "flame_flan"],
+		["nebiros", "shred", "flame_flan"],
+		["nebiros", "shred", "flame_flan"],
+		["nebiros", "shred", "flame_flan"],
+		["nebiros", "shred", "flame_flan"],
+		["nebiros", "nebiros", "skoll", "mech_scouter"],
+		["nebiros", "nebiros", "skoll", "mech_scouter"],
+		["nebiros", "nebiros", "skoll", "mech_scouter"],
+		["nebiros", "nebiros", "skoll", "mech_scouter"],
+		["nebiros", "nebiros", "skoll", "mech_scouter"],
+		["chimera_brain", "chimera_brain"],
+		["malboro"],
+		["anacondaur", "anacondaur"],
+		["ogre", "skoll", "skoll"],
+		["mech_scouter_2", "coeurl", "mech_scouter_2"],
+		["coeurl", "coeurl"]
+	]
+    }
+]
