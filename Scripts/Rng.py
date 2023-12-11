@@ -9,7 +9,8 @@ class RngPC:
 
     def __init__(self, seedID):
         # Initialise RNG Array List of Lists
-        rngArrays = []
+        self.rngArrays = []
+        rngArrays = self.rngArrays
         for i in range(0, 68):
             rngArrays.append([])
 
@@ -23,8 +24,8 @@ class RngPC:
                 rngID += 1
 
         for i in range(0, 68):
+            self.seed = rngArrays[i][0]
             for j in range(0, 10000):
-                self.seed = rngArrays[i][0]
                 rngArrays[i].append(self.__rngRoll(i, self.seed))
 
     def __s32(self, n):

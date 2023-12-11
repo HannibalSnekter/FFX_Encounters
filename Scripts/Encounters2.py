@@ -3,15 +3,22 @@ import json
 import os
 import Rng
 
-initial_rng0 = []
-initial_rng1 = []
 seed_rolls = []
 skiplucksphere = False
 killChocoboEater = False
 
+
 def getNextRoll(index, rngArrays, rollIndexes):
     rollIndexes[index] += 1
     return rngArrays[index][rollIndexes[index]]
+
+# options:
+# 0x01 - Ochu In
+# 0x02 - Luck Sphere Out (Default distances assume luck sphere obtained on way in)
+# 0x04 - Ochu Out
+# 0x08 - Mi'ihen Sim
+# 0x10 - Old Road Sim
+# 0x20 - Extra Sandragora
 
 def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEncounter: bool, forceEncounterAreaName: str, area_times: list,
             area_encounters: list, kilikaKills: int, forcedEncounters: int, options: int, maxDistanceOverride: int = -1):
@@ -69,10 +76,12 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
             if encounterroll < encounterchance:
                 currentdistance = 0
 
+                # Add base time for encounter and extra for Maze Larva
                 areacount += 1
                 time_area += 10.0
                 if areaName == "Via Purifico (Land)": time_area += 10.0
 
+                # Calculation formation and ambush / pre-empt
                 formationroll = getNextRoll(1, rng, rngIndex) % formationcount
                 formation = areadict["Formations"][formationroll]
                 ambushroll = getNextRoll(1, rng, rngIndex) % 256
@@ -82,6 +91,7 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
                 elif ambushroll >= 223:
                     ambush = True
 
+                # Calculate outspeeds
                 if not (firststrike or preempt):
                     for enemy in formation:
                         if ambush:
@@ -90,6 +100,7 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
                             attackcount = attacks[enemy]["outspeed"]
                         time_area += attackcount * attacks[enemy]["attacktime"]
 
+                # Calculate max possible Kilika kills for speed spheres
                 if areaName == "Kilika In" or areaName == "Kilika Out":
                     for enemy in formation:
                         if enemy == "dinonix":
@@ -107,6 +118,7 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
         totaldistance += 1
         currentdistance += 1
 
+    # Add time for extra Sandragora
     if areaName == "Bikanel (West Post-Sandragora 1)" and (options & 0x20) == 0x20:
         rngIndex[1] = rngIndex[1] + 1
         time_area += 10
@@ -114,9 +126,18 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
     area_times = area_times + [time_area]
     area_encounters = area_encounters + [areacount]
 
+    # If current area isn't the final area process the next area
     if areaIndex < len(areas) - 1:
 
         nextArea = areas[areaIndex + 1]["Name"]
+
+        # Conditional processing for specific areas then general processing
+        #
+        # For Kilika In process each combination of Ochu In and Luck Sphere In/Out
+        # For Kilika Out process each combination of Ochu Out and Luck Sphere In/Out conditional on Kilika In options
+        # For Old Road Screen 1 process Mi'ihen simulation encounter options
+        # For Clasko Skip Screen 1 process Old Road simulation encounter options
+        # For Bikanel West (Post Teleport Sphere Sandragora) process extra Sandragora encounter options
 
         if nextArea == "Kilika In":
             if forceEncounterAreaName == "":
@@ -625,36 +646,19 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
         oldRoadSim = True if (options & 0x10) == 0x10 else False
         extraSandragora = True if (options & 0x20) == 0x20 else False
 
-        encounterWriter.writerow([x + 1] + seed_rolls[x] + [forceEncounterAreaName, ochuIn, ochuOut, luckSphereIn, miihenSim, oldRoadSim, extraSandragora] + [kilikaKills, sum(area_encounters) + ghostEncounters] + area_encounters + [ghostEncounters])
-        timingWriter.writerow([x + 1] + seed_rolls[x] + [forceEncounterAreaName, ochuIn, ochuOut, luckSphereIn, miihenSim, oldRoadSim, extraSandragora] + [kilikaKills, sum(area_times) + ghostTime] + area_times + [ghostTime])
-
-
-# Load base rng for rng0 and rng1
-with open("./ffxhd-raw-rng-arrays.csv") as rng_raw_values:
-    rng_file_reader = csv.reader(rng_raw_values,delimiter=",")
-    SeedID = 0
-    for row in rng_file_reader:
-        if SeedID == 0:
-            pass
-        else:
-            seed_rolls.append(row[0:6])
-            initial_rng0.append(int(row[6]))
-            initial_rng1.append(int(row[7]))
-        SeedID += 1
+        encounterWriter.writerow([x + 1] + seed_rolls + [forceEncounterAreaName, ochuIn, ochuOut, luckSphereIn, miihenSim, oldRoadSim, extraSandragora] + [kilikaKills, sum(area_encounters) + ghostEncounters] + area_encounters + [ghostEncounters])
+        timingWriter.writerow([x + 1] + seed_rolls + [forceEncounterAreaName, ochuIn, ochuOut, luckSphereIn, miihenSim, oldRoadSim, extraSandragora] + [kilikaKills, sum(area_times) + ghostTime] + area_times + [ghostTime])
 
 # Load encounter details for areas
-with open("./EncounterAreas_CSR.json") as EncounterAreas:
+with open("../Data/EncounterAreas_CSR.json") as EncounterAreas:
     areas = json.load(EncounterAreas)
 
-# with open("./EncounterAreas_Any.json") as EncounterAreas:
-#     areas = json.load(EncounterAreas)
-
 # Load enemy attack delay details
-with open("./EnemyAttacks.json") as EnemyAttacks:
+with open("../Data/EnemyAttacks.json") as EnemyAttacks:
     attacks = json.load(EnemyAttacks)
 
 # open AreaTimings CSV file for writing
-with open("./AreaTimings.csv", "w", newline='') as timingOutput, open("./AreaEncounters.csv", "w", newline='') as encounterOutput:
+with open("../Output/AreaTimings.csv", "w", newline='') as timingOutput, open("../Output/AreaEncounters.csv", "w", newline='') as encounterOutput:
     timingWriter = csv.writer(timingOutput)
     encounterWriter = csv.writer(encounterOutput)
 
@@ -673,22 +677,27 @@ with open("./AreaTimings.csv", "w", newline='') as timingOutput, open("./AreaEnc
     # Loop through all 256 PC Seeds
     for x in range(0, 256):
 
-        rng = [
-            [initial_rng0[x]],
-            [initial_rng1[x]]
-        ]
+        rng = Rng.RngPC(x)
+        rngIndex = [0] * 68
 
-        rngIndex = [0, 0]
+        # Calculate first 6 Sinscale damage rolls for output
+        seed_rolls = []
 
-        seed = rng[0][0]
+        AuronICVRoll = getNextRoll(22, rng.rngArrays, rngIndex)
+        TidusICVRoll = getNextRoll(20, rng.rngArrays, rngIndex)
 
-        for a in range(10000):
-            rng[0].append(Rng.rngRoll(0, seed))
+        for i in range(3):
+            AuronDamageRoll = getNextRoll(22, rng.rngArrays, rngIndex)
+            AuronCritRoll = getNextRoll(22, rng.rngArrays, rngIndex)
 
-        seed = rng[1][0]
+            TidusDamageRoll = getNextRoll(20, rng.rngArrays, rngIndex)
+            TidusCritRoll = getNextRoll(20, rng.rngArrays, rngIndex)
 
-        for a in range(1000):
-            rng[1].append(Rng.rngRoll(1, seed))
+            AuronDamage = (278 * ((AuronDamageRoll & 31) + 240)) // 256
+            TidusDamage = (134 * ((TidusDamageRoll & 31) + 240)) // 256
+
+            seed_rolls.append(AuronDamage)
+            seed_rolls.append(TidusDamage)
 
         area_times = []
         area_encounters = []
@@ -697,7 +706,7 @@ with open("./AreaTimings.csv", "w", newline='') as timingOutput, open("./AreaEnc
         rngIndex[1] += 3
 
         # Check for Sahagins Pre-Empt / Ambush and apply the time delta
-        ambushroll = getNextRoll(1, rng, rngIndex) % 256
+        ambushroll = getNextRoll(1, rng.rngArrays, rngIndex) % 256
 
         if ambushroll < 32:
             area_times.append(-4.0)
@@ -707,7 +716,7 @@ with open("./AreaTimings.csv", "w", newline='') as timingOutput, open("./AreaEnc
             area_times.append(0.0)
 
         # Check for Geos Pre-Empt / Ambush and apply the time delta
-        ambushroll = getNextRoll(1, rng, rngIndex) % 256
+        ambushroll = getNextRoll(1, rng.rngArrays, rngIndex) % 256
 
         if ambushroll < 32:
             area_times.append(3.0)
@@ -727,7 +736,7 @@ with open("./AreaTimings.csv", "w", newline='') as timingOutput, open("./AreaEnc
         runArea(areas=areas,
                 areaIndex=0,
                 rngIndex=rngIndex[:],
-                rng=rng,
+                rng=rng.rngArrays,
                 forceFinalEncounter=False,
                 forceEncounterAreaName="",
                 area_times=area_times,
@@ -740,7 +749,7 @@ with open("./AreaTimings.csv", "w", newline='') as timingOutput, open("./AreaEnc
         runArea(areas=areas,
                 areaIndex=0,
                 rngIndex=rngIndex[:],
-                rng=rng,
+                rng=rng.rngArrays,
                 forceFinalEncounter=True,
                 forceEncounterAreaName="Chain",
                 area_times=area_times,
@@ -752,13 +761,3 @@ with open("./AreaTimings.csv", "w", newline='') as timingOutput, open("./AreaEnc
 
         os.system("cls")
         print(f"Seed {x+1} / 256 Complete!")
-
-
-# options:
-# 0x01 - Ochu In
-# 0x02 - Luck Sphere Out (Default distances assume luck sphere obtained on way in)
-# 0x04 - Ochu Out
-# 0x08 - Mi'ihen Sim
-# 0x10 - Old Road Sim
-# 0x20 - Extra Sandragora
-
