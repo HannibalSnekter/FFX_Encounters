@@ -92,7 +92,7 @@
     },
     {
         "Name": "Mi'ihen Screen 1",
-        "Distance": 143,
+        "Distance": 131,
         "DangerValue": 50,
 	"StartSteps": 1,
         "EncounterCount": 0,
@@ -109,7 +109,7 @@
     },
     {
         "Name": "Mi'ihen Screen 2",
-        "Distance": 101,
+        "Distance": 97,
         "DangerValue": 50,
 	"StartSteps": 1,
         "EncounterCount": 0,
@@ -138,7 +138,7 @@
     },
     {
         "Name": "Mi'ihen Screen 3",
-        "Distance": 255,
+        "Distance": 252,
         "DangerValue": 50,
 	"StartSteps": 1,
         "EncounterCount": 0,
@@ -229,7 +229,7 @@
     },
     {
         "Name": "Clasko Skip Screen 1",
-        "Distance": 55,
+        "Distance": 60,
         "DangerValue": 35,
 	"StartSteps": 1,
         "EncounterCount": 0,
@@ -263,7 +263,7 @@
     },
     {
         "Name": "Djose Highroad (Aftermath to Temple)",
-        "Distance": 186,
+        "Distance": 188,
         "DangerValue": 40,
 	"StartSteps": 1,
         "EncounterCount": 0,
@@ -289,7 +289,7 @@
     },
     {
         "Name": "Djose Highroad (Temple to Moonflow)",
-        "Distance": 26,
+        "Distance": 23,
         "DangerValue": 40,
 	"StartSteps": 1,
         "EncounterCount": 0,
@@ -440,7 +440,7 @@
     },
     {
         "Name": "Lake Macalania",
-        "Distance": 40,
+        "Distance": 34,
         "DangerValue": 30,
 	"StartSteps": 1,
         "EncounterCount": 0,
