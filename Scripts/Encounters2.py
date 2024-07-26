@@ -18,13 +18,14 @@ def getNextRoll(index, rngArrays, rollIndexes):
 class Options(IntEnum):
     OchuIn = 0x0001
     OchuOut = 0x0002
-    LuckSphereIn = 0x0004
-    LuckSphereOut = 0x0008
-    MiihenSim = 0x0010
-    OldRoadSim = 0x0020
-    ExtraSandragora = 0x0040
-    SkipButterfly1 = 0x0080
-    SkipButterfly2 = 0x0100
+    LuckSphereBeforeOchu = 0x0004
+    LuckSphereIn = 0x0008
+    LuckSphereOut = 0x0010
+    MiihenSim = 0x0020
+    OldRoadSim = 0x0040
+    ExtraSandragora = 0x0080
+    SkipButterfly1 = 0x0100
+    SkipButterfly2 = 0x0200
 
 
 def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEncounter: bool, forceEncounterAreaName: str, area_times: list,
@@ -80,7 +81,12 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
             currentdistance = 0
             time_area += 10.0
 
-        elif areaName == "Kilika Out" and (options & Options.OchuOut) == Options.OchuOut and totaldistance == 74:
+        elif areaName == "Kilika Out" and (options & Options.OchuOut) == Options.OchuOut and (options & Options.LuckSphereBeforeOchu) == 0 and totaldistance == 74:
+            rngIndex[1] = rngIndex[1] + 1
+            currentdistance = 0
+            time_area += 10.0
+
+        elif areaName == "Kilika Out" and (options & Options.OchuOut) == Options.OchuOut and (options & Options.LuckSphereBeforeOchu) == Options.LuckSphereBeforeOchu and totaldistance == 127:
             rngIndex[1] = rngIndex[1] + 1
             currentdistance = 0
             time_area += 10.0
@@ -299,6 +305,20 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
                                 maxDistanceOverride=229
                                 )
 
+                        runArea(areas=areas,
+                                areaIndex=areaIndex + 1,
+                                rng=rng,
+                                rngIndex=rngIndex[:],
+                                forceFinalEncounter=True,
+                                forceEncounterAreaName=nextArea,
+                                area_times=area_times,
+                                area_encounters=area_encounters,
+                                kilikaKills=kilikaKills,
+                                forcedEncounters=forcedEncounters,
+                                options=options | Options.LuckSphereOut | Options.OchuOut | Options.LuckSphereBeforeOchu,
+                                maxDistanceOverride=225
+                                )
+
                 else:
                     runArea(areas=areas,
                             areaIndex=areaIndex + 1,
@@ -329,36 +349,6 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
                                 maxDistanceOverride=172
                                 )
 
-            runArea(areas=areas,
-                    areaIndex=areaIndex + 1,
-                    rng=rng,
-                    rngIndex=rngIndex[:],
-                    forceFinalEncounter=False,
-                    forceEncounterAreaName=forceEncounterAreaName,
-                    area_times=area_times,
-                    area_encounters=area_encounters,
-                    kilikaKills=kilikaKills,
-                    forcedEncounters=forcedEncounters,
-                    options=options
-                    )
-
-            # Only run Ochu Out if Ochu In was not run
-            if (options & Options.OchuIn) == 0:
-                runArea(areas=areas,
-                        areaIndex=areaIndex + 1,
-                        rng=rng,
-                        rngIndex=rngIndex[:],
-                        forceFinalEncounter=False,
-                        forceEncounterAreaName=forceEncounterAreaName,
-                        area_times=area_times,
-                        area_encounters=area_encounters,
-                        kilikaKills=kilikaKills,
-                        forcedEncounters=forcedEncounters,
-                        options=options | Options.OchuOut,
-                        maxDistanceOverride=172
-                        )
-
-            # Only get Luck Sphere on the way out if not got on way in
             if (options & Options.LuckSphereIn) == 0:
                 runArea(areas=areas,
                         areaIndex=areaIndex + 1,
@@ -374,8 +364,36 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
                         maxDistanceOverride=212
                         )
 
-            # Run Ochu Out and Luck Sphere Out if neither run on way in
-            if (options & Options.OchuIn) == 0 and (options & Options.LuckSphereIn) == 0:
+                if (options & Options.OchuIn) == 0:
+                    runArea(areas=areas,
+                            areaIndex=areaIndex + 1,
+                            rng=rng,
+                            rngIndex=rngIndex[:],
+                            forceFinalEncounter=False,
+                            forceEncounterAreaName=forceEncounterAreaName,
+                            area_times=area_times,
+                            area_encounters=area_encounters,
+                            kilikaKills=kilikaKills,
+                            forcedEncounters=forcedEncounters,
+                            options=options | Options.LuckSphereOut | Options.OchuOut,
+                            maxDistanceOverride=229
+                            )
+
+                    runArea(areas=areas,
+                            areaIndex=areaIndex + 1,
+                            rng=rng,
+                            rngIndex=rngIndex[:],
+                            forceFinalEncounter=False,
+                            forceEncounterAreaName=forceEncounterAreaName,
+                            area_times=area_times,
+                            area_encounters=area_encounters,
+                            kilikaKills=kilikaKills,
+                            forcedEncounters=forcedEncounters,
+                            options=options | Options.LuckSphereOut | Options.OchuOut | Options.LuckSphereBeforeOchu,
+                            maxDistanceOverride=225
+                            )
+
+            else:
                 runArea(areas=areas,
                         areaIndex=areaIndex + 1,
                         rng=rng,
@@ -386,9 +404,24 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
                         area_encounters=area_encounters,
                         kilikaKills=kilikaKills,
                         forcedEncounters=forcedEncounters,
-                        options=options | Options.LuckSphereOut | Options.OchuOut,
-                        maxDistanceOverride=229
+                        options=options
                         )
+
+                # Don't want to run both Ochu In and Ochu Out
+                if (options & Options.OchuIn) == 0:
+                    runArea(areas=areas,
+                            areaIndex=areaIndex + 1,
+                            rng=rng,
+                            rngIndex=rngIndex[:],
+                            forceFinalEncounter=False,
+                            forceEncounterAreaName=forceEncounterAreaName,
+                            area_times=area_times,
+                            area_encounters=area_encounters,
+                            kilikaKills=kilikaKills,
+                            forcedEncounters=forcedEncounters,
+                            options=options | Options.OchuOut,
+                            maxDistanceOverride=172
+                            )
 
         elif nextArea == "Old Road Screen 1":
             if forceEncounterAreaName == "":
@@ -660,6 +693,7 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
 
         ochuIn = True if (options & Options.OchuIn) == Options.OchuIn else False
         ochuOut = True if (options & Options.OchuOut) == Options.OchuOut else False
+        luckBeforeOchu = True if (options & Options.LuckSphereBeforeOchu) == Options.LuckSphereBeforeOchu else False
         luckSphereIn = True if (options & Options.LuckSphereIn) == Options.LuckSphereIn else False
         luckSphereOut = True if (options & Options.LuckSphereOut) == Options.LuckSphereOut else False
         miihenSim = True if (options & Options.MiihenSim) == Options.MiihenSim else False
@@ -671,15 +705,15 @@ def runArea(areas: list, areaIndex: int, rng: list, rngIndex: list, forceFinalEn
         totalTime = sum(area_times) + ghostTime
 
         if len(best_times) < x + 1:
-            best_times.append(totalTime)
-        elif totalTime < best_times[x] * 1.03:
-        # else:
+           best_times.append(totalTime)
 
+        if totalTime < best_times[x] * 1.03:
+        # if True:
             if totalTime < best_times[x]:
                 best_times[x] = totalTime
 
-            encounterWriter.writerow([x + 1] + seed_rolls + [forceEncounterAreaName, ochuIn, ochuOut, luckSphereIn, luckSphereOut, miihenSim, oldRoadSim, skipButterfly1, extraSandragora] + [kilikaKills, totalEncounters] + area_encounters + [ghostEncounters])
-            timingWriter.writerow([x + 1] + seed_rolls + [forceEncounterAreaName, ochuIn, ochuOut, luckSphereIn, luckSphereOut, miihenSim, oldRoadSim, skipButterfly1, extraSandragora] + [kilikaKills, totalTime] + area_times + [ghostTime])
+            encounterWriter.writerow([x + 1] + seed_rolls + [forceEncounterAreaName, ochuIn, ochuOut, luckBeforeOchu, luckSphereIn, luckSphereOut, miihenSim, oldRoadSim, skipButterfly1, extraSandragora] + [kilikaKills, totalEncounters] + area_encounters + [ghostEncounters])
+            timingWriter.writerow([x + 1] + seed_rolls + [forceEncounterAreaName, ochuIn, ochuOut, luckBeforeOchu, luckSphereIn, luckSphereOut, miihenSim, oldRoadSim, skipButterfly1, extraSandragora] + [kilikaKills, totalTime] + area_times + [ghostTime])
 
 
 # Load encounter details for areas
@@ -706,8 +740,8 @@ with open("../Output/AreaTimings.csv", "w", newline='') as timingOutput, open(".
     for i in range(len(areas)):
         areanames.append(areas[i]["Name"])
 
-    timingWriter.writerow(['Seed ID', 'Auron1', 'Tidus1', 'Auron2', 'Tidus2', 'Auron3', 'Tidus3', 'Extra Encounter Area', 'Ochu In', 'Ochu Out', 'Luck Sphere In', 'Luck Sphere Out','Mi''ihen sim', 'Old Road Sim', 'Butterfly Skip 1', 'Extra Sandragora', 'Kilika Kills', 'Total'] + areanames + ['Time for Ghost'])
-    encounterWriter.writerow(['Seed ID', 'Auron1', 'Tidus1', 'Auron2', 'Tidus2', 'Auron3', 'Tidus3', 'Extra Encounter Area', 'Ochu In', 'Ochu Out', 'Luck Sphere In', 'Luck Sphere Out', 'Mi''ihen sim', 'Old Road Sim', 'Butterfly Skip 1', 'Extra Sandragora', 'Kilika Kills', 'Total'] + areanames + ['Encounters for Ghost'])
+    timingWriter.writerow(['Seed ID', 'Auron1', 'Tidus1', 'Auron2', 'Tidus2', 'Auron3', 'Tidus3', 'Extra Encounter Area', 'Ochu In', 'Ochu Out', 'Luck Before Ochu', 'Luck Sphere In', 'Luck Sphere Out','Mi''ihen sim', 'Old Road Sim', 'Butterfly Skip 1', 'Extra Sandragora', 'Kilika Kills', 'Total'] + areanames + ['Time for Ghost'])
+    encounterWriter.writerow(['Seed ID', 'Auron1', 'Tidus1', 'Auron2', 'Tidus2', 'Auron3', 'Tidus3', 'Extra Encounter Area', 'Ochu In', 'Ochu Out', 'Luck Before Ochu', 'Luck Sphere In', 'Luck Sphere Out', 'Mi''ihen sim', 'Old Road Sim', 'Butterfly Skip 1', 'Extra Sandragora', 'Kilika Kills', 'Total'] + areanames + ['Encounters for Ghost'])
 
     # Loop through all 256 PC Seeds
     for x in range(0, 256):
